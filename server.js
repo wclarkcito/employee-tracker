@@ -48,15 +48,17 @@ function start() {
     inquirer.prompt({
         name: "start",
         type: "list",
-        message: "Welcome please ksfsldflsf",
+        message: "Welcome please select what you would like to do",
         choices: ["Add Department", "Add Role", "List of Employees", "Exit"]
     })
         .then(function (answer) {
             if (answer.start === "Add Department") {
                 addDepartment();
             } else if (answer.start === "Add Role") {
+                addRole();
                 console.log("role");
             } else if (answer.start === "List of Employees") {
+                addEmployee();
                 console.log("employees");
             } else {
                 console.log("Thank you!")
@@ -67,5 +69,12 @@ function start() {
 
 function addDepartment() {
     console.log("department");
+}
 
+function addRole() {
+    console.log("role");
+}
+
+function addEmployee() {
+    console.log("employees");
 }
