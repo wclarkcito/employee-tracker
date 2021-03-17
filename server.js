@@ -6,6 +6,7 @@ const path = require("path");
 const inquirer = require('inquirer');
 const fs = require('fs');
 const table = require('console.table');
+const Employee = require('./lib/departments')
 
 
 
@@ -80,6 +81,7 @@ function start() {
         console.log("role")
     }
     function addEmployee() {
+        console.log("employee")
 
     }
 
