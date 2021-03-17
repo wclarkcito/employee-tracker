@@ -44,6 +44,7 @@ function showDept() {
         console.table(res);
     })
 }
+showDept();
 
 function start() {
     inquirer.prompt({
