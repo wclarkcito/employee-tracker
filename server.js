@@ -40,13 +40,13 @@ connection.connect((err) => {
     setTimeout(start, 1000);
 });
 
-function showDept() {
-    connection.query("SELECT * FROM departments", function (err, res, fields) {
-        if (err) throw err;
-        console.table(res);
-    })
-    connection.end()
-}
+// function showDept() {
+//     connection.query("SELECT * FROM departments", function (err, res, fields) {
+//         if (err) throw err;
+//         console.table(res);
+//     })
+//     connection.end()
+// }
 
 
 
@@ -110,6 +110,9 @@ function addDepartment() {
                     start()
 
                 })
+
+
+
         })
 
 
@@ -121,9 +124,10 @@ function viewDepartments() {
     connection.query("SELECT * FROM departments", function (err, res, fields) {
         if (err) throw err;
         console.table(res)
-        return res;
+        start()
+        // return res;
     })
-    start()
+
 
 
 }
@@ -133,10 +137,10 @@ function viewDepartments() {
 
 
 function addRole() {
-    connection.query("SELECT * FROM role", function (err, res, fields) {
+    connection.query("SELECT * FROM departments", function (err, res, fields) {
         if (err) throw err;
-        console.table(res)
-        const roleNames = res.map(row => row.title)
+
+        const roleNames = res.map(row => row.depart_name)
         inquirer.prompt([
             {
                 name: "title",
@@ -158,20 +162,32 @@ function addRole() {
 
             }
         ]).then(function (answers) {
-            console.log(answers);
+
+
             connection.query(
-                "INSERT INTO role SET ?", {
-                Title: answers.Title,
-                Salary: answers.Salary,
-                department: answers.department,
-            },
+                "SELECT departments.id FROM departments WHERE depart_name = ?", answers.department,
                 function (err, res) {
                     if (err) throw err;
-                    console.log(res)
+
+                    var deptId = res[0].id
+                    connection.query(
+                        "INSERT INTO role SET ?", {
+                        Title: answers.title,
+                        Salary: answers.newSalary,
+                        department_id: deptId,
+                    },
+                        function (err, res) {
+                            if (err) throw err;
+                            // console.log(res)
+                            start()
+                        }
+                    )
                 }
             )
+
         })
     })
+
 }
 
 function viewRoles() {
@@ -179,9 +195,9 @@ function viewRoles() {
     connection.query("SELECT * FROM role", function (err, res, fields) {
         if (err) throw err;
         console.table(res)
-        return res;
+        start()
     })
-    start()
+
 
 
 }
@@ -216,7 +232,7 @@ function addEmployee() {
         ])
         .then(function (answer) {
 
-            console.log(answer)
+
             connection.query(
                 "INSERT INTO employee SET ?", {
                 first_name: answer.first_name,
@@ -226,8 +242,8 @@ function addEmployee() {
             },
                 function (err, res, fields) {
                     if (err) throw err;
-                    console.table(res)
-                    return res;
+
+                    start()
 
 
                 })
@@ -246,8 +262,9 @@ function viewEmployee() {
     connection.query("SELECT * FROM employee", function (err, res, fields) {
         if (err) throw err;
         console.table(res);
+        start()
     })
-    connection.end()
+
 
 }
 
