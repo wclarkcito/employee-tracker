@@ -16,7 +16,7 @@
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     
     CONSTRAINT fk_departments
-    FOREIGN KEY (department_id)
+    FOREIGN KEY (departments_id)
     REFERENCES departments(id)
     ON DELETE CASCADE
     );
@@ -29,9 +29,9 @@
     manager_id INTEGER,
     
     
-	CONSTRAINT fk_role_
+	CONSTRAINT fk_role
     FOREIGN KEY (role_id)
-    REFERENCES role_(id)
+    REFERENCES role(id)
     ON DELETE CASCADE,
     
 	CONSTRAINT fk_employee

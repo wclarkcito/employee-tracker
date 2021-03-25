@@ -220,7 +220,7 @@ function addEmployee() {
                 name: "role_id",
                 type: "list",
                 message: "What role id",
-                choices: ["1", "2", "3", "4"]
+                choices: ["1", "2", "3", "4", "5"]
             },
             {
                 name: "manager_id",
