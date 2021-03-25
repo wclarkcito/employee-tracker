@@ -12,7 +12,7 @@
     CREATE TABLE role (
     title VARCHAR(30) NOT NULL,
     salary DECIMAL,
-    department_id INTEGER(11),
+    departments_id INTEGER(11),
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     
     CONSTRAINT fk_departments

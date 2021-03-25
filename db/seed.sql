@@ -10,6 +10,7 @@
     INSERT into role (title, salary, department_id) VALUES ("Sales Representative", 45000, 1);
     INSERT into role (title, salary, department_id) VALUES ("Sales Manager", 95000, 1);
     INSERT into role(title, salary, department_id) VALUES ("HR", 60000, 4);
+    INSERT into role(title, salary, department_id) VALUES ("Legal", 80000, 3);
   
 
       INSERT into employee ( first_name, last_name, role_id, manager_id) VALUES ( "Shia", "Labeuf", 3, null);
