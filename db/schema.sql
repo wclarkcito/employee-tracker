@@ -1,4 +1,4 @@
-   drop database if exists employee_db;
+ drop database if exists employee_db;
    
     CREATE DATABASE employee_db;
     
@@ -39,6 +39,4 @@
     REFERENCES employee(id)
     ON DELETE SET NULL
     );
-
-    
    
