@@ -6,7 +6,7 @@ const path = require("path");
 const inquirer = require('inquirer');
 const fs = require('fs');
 const table = require('console.table');
-//const Employee = require('./lib/departments')
+// const Employee = require('./lib/departments')
 
 
 
@@ -174,7 +174,7 @@ function addRole() {
                         "INSERT INTO role SET ?", {
                         Title: answers.title,
                         Salary: answers.newSalary,
-                        department_id: deptId,
+                        departments_id: deptId,
                     },
                         function (err, res) {
                             if (err) throw err;
